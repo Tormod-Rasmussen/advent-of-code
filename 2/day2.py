@@ -11,8 +11,7 @@ outcomes = {
 }
 score = 0
 with open("2/input.txt") as f:
-    for line in f:
-        score = sum(outcomes[line[:3]] for line in f)
+    score = sum(outcomes[line[:3]] for line in f)
 print("part 1:",score)
 outcomes = {
     "A X":3,
