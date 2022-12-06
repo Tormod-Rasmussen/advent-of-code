@@ -1,5 +1,5 @@
-import copy
-input = open("5/input.txt").readlines()
+from copy import deepcopy
+lines = open("5/input.txt").read().splitlines()
 part1 = ""
 part2 = ""
 crates = {
@@ -13,7 +13,7 @@ crates = {
     "8": [],
     "9": []
 }
-for line in input:
+for line in lines:
     if "[" in line:
         crates["1"].append(line[1])
         crates["2"].append(line[5])
@@ -25,16 +25,15 @@ for line in input:
         crates["8"].append(line[29])
         crates["9"].append(line[33])
         continue
-    if line == "\n":
+    if line == "":
         for i in crates:
             crates[i] = [x for x in crates[i] if x != " "]
             crates[i].reverse()
-            cratesPart2 = copy.deepcopy(crates)
+            cratesPart2 = deepcopy(crates)
     if "move" in line:
-        line = line.rstrip()
         line = line.split(" ")
         cratesToMove = int(line[1])
-        cratesPart2[line[5]] = cratesPart2[line[5]] + cratesPart2[line[3]][-cratesToMove:]
+        cratesPart2[line[5]] += cratesPart2[line[3]][-cratesToMove:]
         cratesPart2[line[3]] = cratesPart2[line[3]][:-cratesToMove]
         while cratesToMove:
             crates[line[5]].append(crates[line[3]].pop())
