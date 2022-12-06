@@ -1,4 +1,4 @@
-input = open("6/input.txt").readlines()[0]
+input = open("6/input.txt").read()
 for i in range(len(input)):
     if len(set(input[i:i+4])) == 4:
         print("part 1:", i+4)
