@@ -11,7 +11,8 @@ rope = {
     8: [0, 0],
     9: [0, 0]  # part 2 tail
 }
-visited = set()
+visited1 = set()
+visited2 = set()
 
 def moveHead(head):
     if move[0] == "L":
@@ -51,18 +52,9 @@ for move in lines:
     move = move.split(" ")
     for i in range(int(move[1])):
         rope[0] = moveHead(rope[0])
-        rope[1] = moveTail(rope[0], rope[1])
-        visited.add(tuple(rope[1]))
-print("part 1:", len(visited))
-
-rope[0] = [0, 0]
-rope[1] = [0, 0]
-visited = set()
-for move in lines:
-    move = move.split(" ")
-    for i in range(int(move[1])):
-        rope[0] = moveHead(rope[0])
         for i in range(1, 10):
             rope[i] = moveTail(rope[i-1], rope[i])
-        visited.add(tuple(rope[9]))
-print("part 2:", len(visited))
+        visited1.add(tuple(rope[1]))
+        visited2.add(tuple(rope[9]))
+print("part 1:", len(visited1))
+print("part 2:", len(visited2))
