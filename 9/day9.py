@@ -13,9 +13,6 @@ rope = {
 }
 visited = set()
 
-# moves the head of the rope
-
-
 def moveHead(head):
     if move[0] == "L":
         return [head[0] - 1, head[1]]
@@ -27,9 +24,6 @@ def moveHead(head):
         return [head[0], head[1] - 1]
     else:
         return head
-
-# moves the tail of the rope
-
 
 def moveTail(head, tail):
     # moving diagonally, only needed for part 2
@@ -52,7 +46,6 @@ def moveTail(head, tail):
         return [head[0], head[1] + 1]
     else:
         return tail
-
 
 for move in lines:
     move = move.split(" ")
