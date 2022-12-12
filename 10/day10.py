@@ -1,25 +1,35 @@
 lines = open("10/input.txt").read().splitlines()
+cycle = 0
 x = 1
-cycles = 1
-onHold = [0, 0]
+computing = 0
 signalStrength = 0
+num = 0
+crt = [""]*6
 
-def cycle(hold):
-    global x
-    global cycles
-    global onHold
-    global signalStrength
-    global crtLine
-    x, onHold[0], onHold[1] = x + onHold[0], onHold[1], hold
-    if cycles == 20 or cycles == 60 or cycles == 100 or cycles == 140 or cycles == 180 or cycles == 220:
-        signalStrength += x * cycles
-    cycles += 1
-    
+def clock(instruction):
+    global x, cycle, computing, signalStrength, num, crt
+    cycle += 1
+    pos = cycle - num*40
+    if x <= pos <= x+2:
+        crt[num] += "⬛"
+    else:
+        crt[num] += "⬜"
+    if cycle % 40 == 0:
+        num += 1
+    if (cycle -20) % 40 == 0:
+        signalStrength += x*cycle
+    x += computing
+    computing = 0
+    if instruction == "noop":
+        return
+    instruction = instruction.split(" ")
+    computing = int(instruction[1])
+    # running clock again to simulate the 2 cycles it takes to add
+    clock("noop")
+
 for line in lines:
-    if line == "noop":
-        cycle(0)
-        continue
-    line = line.split(" ")
-    cycle(int(line[1]))
-    cycle(0)
+    clock(line)
 print("part 1:", signalStrength)
+print("part 2:")
+for line in crt:
+    print(line)
