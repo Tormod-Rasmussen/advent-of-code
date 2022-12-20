@@ -11,10 +11,7 @@ for line in lines:
 
 def findCoordinates(sensor): # find all x coordinates in range of a sensor
     y = 2000000 # 10 for test input, 2000000 for part 1
-    if sensor[1] > y:
-        over = sensors[sensor] - sensor[1] + y
-    elif sensor[1] < y:
-        over = sensors[sensor] + sensor[1] - y
+    over = sensors[sensor] - sensor[1] + y if sensor[1] > y else sensors[sensor] + sensor[1] - y
     for i in range(sensor[0]-over,sensor[0]+over):
         seen[i] = 1
 
