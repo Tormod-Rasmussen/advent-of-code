@@ -6,7 +6,7 @@ def importData():
         line = line.split(" ")
         if len(line) == 2: # if only 2 items, it's a number
             monkeys[line[0].strip(":")] = int(line[1])
-        else: # otherwise it's an equation
+        else: # otherwise it's an expression
             monkeys[line[0].strip(":")] = line[1:4]
 
 def calc(monkey):
