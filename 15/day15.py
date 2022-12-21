@@ -9,13 +9,10 @@ for line in lines:
     beaconX, beaconY = int(line[8].strip("x=,")), int(line[9].strip("y="))
     sensors[(sensorX,sensorY)] = manhattanDistance((sensorX,sensorY),(beaconX,beaconY))
 
-def findCoordinates(sensor): # find all x coordinates in range of a sensor
-    y = 2000000 # 10 for test input, 2000000 for part 1
+seen = {} # tracks all x coordinates with a sensor within range
+y = 2000000 # 10 for test, 2000000 for part 1
+for sensor in sensors:
     over = sensors[sensor] - sensor[1] + y if sensor[1] > y else sensors[sensor] + sensor[1] - y
     for i in range(sensor[0]-over,sensor[0]+over):
         seen[i] = 1
-
-seen = {} # tracks all x coordinates with a sensor within range
-for sensor in sensors:
-    findCoordinates(sensor)
 print("part 1:",len(seen))
