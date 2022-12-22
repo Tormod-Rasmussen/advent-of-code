@@ -1,4 +1,4 @@
-lines = open("20/input.txt").read().splitlines()
+lines = open("21/input.txt").read().splitlines()
 monkeys = {}
 
 def importData():
