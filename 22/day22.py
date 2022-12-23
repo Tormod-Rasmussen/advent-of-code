@@ -47,14 +47,14 @@ def wrap(steps): # wrap around to the other side if moving off the board
 
 def move(steps): # move forward a given number of steps
     global position
-    ahead = (0,1) if facing == "R" else (1,0) if facing == "D" else (0,-1) if facing == "L" else (-1,0)
+    inFront = (0,1) if facing == "R" else (1,0) if facing == "D" else (0,-1) if facing == "L" else (-1,0)
     while steps > 0:
-        if grid[position[0]+ahead[0]][position[1]+ahead[1]] == "#":
+        if grid[position[0]+inFront[0]][position[1]+inFront[1]] == "#":
             return
-        elif grid[position[0]+ahead[0]][position[1]+ahead[1]] == " ":
+        elif grid[position[0]+inFront[0]][position[1]+inFront[1]] == " ":
             steps = wrap(steps)
         else:
-            position = (position[0]+ahead[0],position[1]+ahead[1])
+            position = (position[0]+inFront[0],position[1]+inFront[1])
         steps -= 1
 
 for i in path: # follow the path
