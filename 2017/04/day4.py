@@ -15,7 +15,6 @@ valid = 0
 for line in lines:
     words = line.split()
     sorted_words_set = set(tuple(sorted(word)) for word in words)
-    
     if len(set(words)) == len(words) and len(sorted_words_set) == len(words):
         valid += 1
 
