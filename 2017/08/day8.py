@@ -1,12 +1,14 @@
 #--- Day 8: I Heard You Like Registers ---
 
 with open('2017/08/input.txt') as f:
-    variables = {name:0 for name in [line.strip().split()[0] for line in f]}
-    
-with open('2017/08/input.txt') as f:
     lines = f.read().splitlines()
 
+variables = {}
+for line in lines:
+    variables[line.strip().split()[0]] = 0
+
 highest_value = 0
+
 for line in lines:
     line = line.split()
     if eval(f'{variables[line[4]]} {line[5]} {line[6]}'):
