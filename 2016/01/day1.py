@@ -4,7 +4,7 @@ with open('2016/01/input.txt') as f:
     instructions = [(i[0], int(i[1:])) for i in f.readline().replace(' ','').split(',')]
 
 def find_shortest_path(instructions, part2=False):
-    directions = {0: (0, 1), 1: (1, 0), 2: (0, -1), 3: (-1, 0)} # N,E,S,W
+    directions = {0: (1, 0), 1: (0, 1), 2: (-1, 0), 3: (0, -1)} # N,E,S,W
     visited = [(0,0)]
     x,y,facing = 0,0,0
     for turn,steps in instructions:
