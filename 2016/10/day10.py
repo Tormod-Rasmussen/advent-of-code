@@ -14,7 +14,6 @@ for line in lines:
         line = line.split()
         instructions.update({int(line[1]):[line[5],int(line[6]),line[-2],int(line[-1])]})
         bots[int(line[1])] = []
-        outputs[int(line[1])] = None
 # starting values
 for line in lines:
     if line.startswith('v'):
